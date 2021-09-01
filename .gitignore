@@ -1,0 +1,6 @@
+#Git ignore
+# Created by .ignore support plugin (hsz.mobi)
+assets/
+node_modules/
+package-lock.json
+.idea/
