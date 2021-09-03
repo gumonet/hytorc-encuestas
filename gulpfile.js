@@ -61,7 +61,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('watch', () => {
-	gulp.watch(['./build/scss/*.scss', './build/img/**', './build/js/**'], (done) => {
+	gulp.watch(['./build/sass/*.scss', './build/img/**', './build/js/**'], (done) => {
 		gulp.series(['run'])(done);
 	});
 });

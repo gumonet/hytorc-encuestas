@@ -1,4 +1,4 @@
-$theme_blue: #003C69;
+$theme_blue: #283383;
 $theme_gray: #EDEDED;
 $theme_blueText: #003C69;
 $theme_white: #ffff;
@@ -8,8 +8,7 @@ h1, h2, h3, h4, h5{
 }
 body{
   font-family: Poppins, Arial, serif;
-  font-weight: 200;
-  color: $theme_blueText;
+  background: #F6F6F6;
 }
 .text-medium{
   p{
@@ -25,4 +24,10 @@ h1,h2{
 
 h3{
 
+}
+
+.btn-primary{
+  background-color: $theme_blue;
+  color: white;
+  border: none;
 }
