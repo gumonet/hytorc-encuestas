@@ -39,5 +39,36 @@ de la operación o entrega?
 
 ## Estructura SQL de la tabla ##
 
+~~~
+CREATE TABLE `homestead`.`registros` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cliente_id` VARCHAR(45) NULL,
+  `nombre` VARCHAR(200) NULL,
+  `rep_ventas` VARCHAR(200) NULL,
+  `correo_electronico` VARCHAR(200) NULL,
+  `date` DATE NULL,
+  `tipo_encuesta` VARCHAR(100) NULL,
+  `id_factura` VARCHAR(4100) NULL,
+  `ventas_p1` VARCHAR(45) NULL,
+  `ventas_p2` VARCHAR(45) NULL,
+  `ventas_p3` VARCHAR(45) NULL,
+  `ventas_p4` VARCHAR(45) NULL,
+  `ventas_p5` VARCHAR(45) NULL,
+  `ventas_p6` VARCHAR(45) NULL,
+  `ventas_p7` VARCHAR(45) NULL,
+  `ventas_p8` VARCHAR(45) NULL,
+  `servicios_p1` VARCHAR(45) NULL,
+  `servicios_p2` VARCHAR(45) NULL,
+  `servicios_p3` VARCHAR(45) NULL,
+  `servicios_p4` VARCHAR(45) NULL,
+  `servicios_p5` VARCHAR(45) NULL,
+  `renta_p1` VARCHAR(45) NULL,
+  `renta_p2` VARCHAR(45) NULL,
+  `renta_p3` VARCHAR(45) NULL,
+  `renta_p4` VARCHAR(45) NULL,
+  `fecha_registro` DATETIME NULL,
+  PRIMARY KEY (`id`));
+~~~
+
 
 
