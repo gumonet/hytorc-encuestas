@@ -35,14 +35,20 @@ gulp.task('sass', function() {
 
 gulp.task('js', function() {
 	gulp.src([
-		//'./node_modules/bootstrap/dist/js/bootstrap.bundle.js',
 		'./build/js/main.js'
 	])
 		.pipe(concat('main.js'))
 		.pipe(minify())
 		.pipe(gulp.dest('./assets/js/'))
 });
-
+gulp.task('plugins', function() {
+	gulp.src([
+		'./node_modules/vanillajs-datepicker/dist/js/datepicker-full.js',
+		'./node_modules/vanillajs-datepicker/dist/js/locales/es.js',
+		'./node_modules/vanillajs-datepicker/dist/css/datepicker.css',
+	])
+		.pipe(gulp.dest('assets/plugins/'));
+});
 
 //Fonts
 /*gulp.task('fonts', function() {

@@ -49,7 +49,14 @@
     height: 100% !important;
     justify-content: center;
     .form-group{
-      margin: 0.5rem auto;
+      margin: 1.2rem auto;
     }
+  }
+}
+.form-survey{
+  .form-group{
+    margin: 1rem auto;
+    background: #ffffff;
+    padding: 1rem;
   }
 }
