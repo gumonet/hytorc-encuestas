@@ -37,6 +37,7 @@ de la operación o entrega?
 `renta_p3` ¿El equipo cumplía con las Especificaciones requeridas?
 `renta_p4` ¿Cómo califica Nuestros servicios?
 
+## Estructura SQL de la tabla ##
 
 
 
