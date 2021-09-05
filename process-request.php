@@ -4,14 +4,20 @@ require_once 'class-gm-Database.php';
 $post = $_POST;
 
 if( isset( $post['action'] ) ) {
+	$controller = new GMDatabase();
 
 	switch ( $post['action'] ) {
 		case 'save_register':
-			echo '<h1>HOME</h1>';
+			if ( $controller->save_register( $post ) ){
+				//obtener tipo de encuestas
+				header('Location: encuesta-ventas.php');
+			} else {
+				echo '<h1>Ocurrio un error al almacenar el registro</h1>';
+			}
 			break;
 		case 'update_register':
 			echo '<h1>Update register</h1>';
-			GMDatabase::save_register( $post );
+			//GMDatabase::update_register( $post );
 			break;
 	}
 

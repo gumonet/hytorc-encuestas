@@ -21,19 +21,22 @@
 				<div class="col-lg-4 form-home-content">
 					<h2>Registrarse</h2>
 					<div class="content-form">
-						<form action="#">
+						<form action="process-request.php" method="post">
+							<input type="hidden" name="action" value="save_register">
+							<input type="hidden" name="cliente_id" value="<?php echo $_GET['cliente_id']; ?>">
+							<input type="hidden" name="id_factura" value="<?php echo $_GET['id_factura']; ?>">
 							<div class="form-group">
-								<input type="text" name="name" id="name" placeholder="Nombre del cliente" class="form-control">
+								<input type="text" name="nombre" id="nombre" placeholder="Nombre del cliente" class="form-control">
 							</div>
 							<div class="form-group">
-								<input type="text" name="representante_vtas" id="representante_vtas" placeholder="Nombre del representante de ventas" class="form-control">
+								<input type="text" name="rep_ventas" id="rep_ventas" placeholder="Nombre del representante de ventas" class="form-control">
 							</div>
 							<div class="form-group">
-								<input type="text" name="email" id="email" placeholder="Correo electrónico" class="form-control">
+								<input type="text" name="correo_electronico" id="correo_electronico" placeholder="Correo electrónico" class="form-control">
 							</div>
 							<div class="form-group">
 								<label for="date">Seleccionar fecha</label>
-								<input type="text" name="date" id="date" placeholder="Nombre del cliente" class="form-control">
+								<input type="text" name="date" id="date" class="form-control">
 							</div>
 							<div class="form-group">
 								<button type="submit" class="form-control btn btn-primary"> Enviar </button>
