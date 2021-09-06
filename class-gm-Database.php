@@ -26,27 +26,31 @@ class GMDatabase{
 			" ' " . $array_data['id_factura'] . " ' ".
 		" )";
 
-		return $this->insertData( $query );
+		return $this->processQuery( $query );
 		//return array( 'keys' => implode( ',', $keys ), 'values' => implode( ',', $values) );
 	}
 
-	public static function update_register( $array_data ) {
+	public function update_register( $array_data ) {
+		$id = $array_data['id'];
+
 		unset( $array_data['action'] );
-		$keys   = [];
-		$values = [];
-		foreach ( $array_data as $key => $data ) {
-			if ( $key !== 'id' ) {
-				$keys[]  = $key;
-				$values[] = $data;
-			}
-		}
-		$query_insert = "INSERT INTO registros ( " . implode( ',', $keys ) . " ) VALUES ( " . implode( '', $values ) . " )";
+		unset( $array_data['id'] );
 
-		echo $query_insert;
-		//return array( 'keys' => implode( ',', $keys ), 'values' => implode( ',', $values) );
+		$query = "UPDATE registros SET ";
+		$cont = 1;
+		foreach ( $array_data as $key => $data ) {
+			$query .= " " . $key . " = '" . $data ;
+			$query .=  ( $cont === count( $array_data ) ) ? "' " : "', ";
+			$cont++;
+		}
+
+		$query .= " where id = " . $id;
+
+		return $this->processQuery( $query );
+
 	}
 
-	private function insertData( $query ) {
+	private function processQuery( $query ) {
 
 		$transaction_query = mysqli_query( $this->conn, $query );
 		$transaction_id = ( $transaction_query ) ? mysqli_insert_id( $this->conn )  : false;

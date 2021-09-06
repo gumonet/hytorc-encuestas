@@ -17,24 +17,14 @@ if( isset( $post['action'] ) ) {
 			}
 			break;
 		case 'update_register':
-			echo '<h1>Update register</h1>';
-			//GMDatabase::update_register( $post );
+			$register_id = $controller->update_register( $post );
+			if ( $register_id  !== false ) {
+				//Send email
+				header( 'Location: gracias.php' );
+			} else{
+				echo '<h1>Ocurrio un error al almacenar el registro</h1>';
+			}
 			break;
 	}
 
 }
-die();
-
-/*$query = "INSERT INTO registros
-(
-`cliente_id`,
-`nombre`,
-`rep_ventas`,
-`correo_electronico`) VALUES ( 'ID-234', 'ANGEL GUTIERREZ MONOLA', 'JOSE HERNANDEZ LOPEZ', 'angel@gumonet.com' )";
-
-$db = new GMDatabase();
-$db->insertData( $query );
-
-
-
-echo json_encode( $post );*/
