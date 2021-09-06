@@ -48,10 +48,10 @@ class GMDatabase{
 
 	private function insertData( $query ) {
 
-		$transaction = mysqli_query( $this->conn, $query );
+		$transaction_query = mysqli_query( $this->conn, $query );
+		$transaction_id = ( $transaction_query ) ? mysqli_insert_id( $this->conn )  : false;
 		mysqli_close( $this->conn );
-
-		return $transaction;
+		return $transaction_id;
 
 	}
 

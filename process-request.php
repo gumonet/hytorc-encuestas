@@ -8,9 +8,10 @@ if( isset( $post['action'] ) ) {
 
 	switch ( $post['action'] ) {
 		case 'save_register':
-			if ( $controller->save_register( $post ) ){
+			$register_id = $controller->save_register( $post );
+			if ( $register_id !== false ){
 				//obtener tipo de encuestas
-				header('Location: encuesta-ventas.php');
+				header('Location: encuesta-ventas.php?survey=' . $register_id);
 			} else {
 				echo '<h1>Ocurrio un error al almacenar el registro</h1>';
 			}
