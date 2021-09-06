@@ -6,8 +6,12 @@ class GMDatabase{
 
 	public function __construct () {
 
-		$this->conn = mysqli_connect("hytorc-mysql", "homestead", "secret", "homestead");
+		$this->conn = $this->get_con();
 
+	}
+
+	public function get_con(){
+		return mysqli_connect("hytorc-mysql", "homestead", "secret", "homestead");
 	}
 
 	public  function save_register( $array_data ) {
@@ -48,6 +52,17 @@ class GMDatabase{
 
 		return $this->processQuery( $query );
 
+	}
+
+	public function getEmail( $id_encuesta ){
+		$con = $this->get_con();
+		$results = $con->query( " SELECT correo_electronico, nombre FROM registros WHERE id = " . $id_encuesta );
+		if ( $results->num_rows > 0 ) {
+			$row = mysqli_fetch_assoc($results);
+			mysqli_close( $con );
+			return array( 'email' => $row['correo_electronico'], 'nombre' => $row['nombre']);
+		}
+		return false;
 	}
 
 	private function processQuery( $query ) {

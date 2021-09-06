@@ -1,5 +1,6 @@
 <?php
 require_once './includes/class-gm-Database.php';
+require_once './includes/class-gm-mailer.php';
 
 $post = $_POST;
 
@@ -17,9 +18,12 @@ if( isset( $post['action'] ) ) {
 			}
 			break;
 		case 'update_register':
-			$register_id = $controller->update_register( $post );
+			$register_id = 7; //$controller->update_register( $post );
 			if ( $register_id  !== false ) {
-				//Send email
+				$receptor = $controller->getEmail( $register_id );
+				if ( $receptor !== false) {
+					SendEmail::send( $receptor );
+				}
 				header( 'Location: gracias.php' );
 			} else{
 				echo '<h1>Ocurrio un error al almacenar el registro</h1>';
