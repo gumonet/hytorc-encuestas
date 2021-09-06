@@ -1,5 +1,5 @@
 <?php
-require_once 'class-gm-Database.php';
+require_once './includes/class-gm-Database.php';
 
 $post = $_POST;
 

@@ -1,3 +1,9 @@
+<?php
+if ( ! isset( $_GET['survey'] ) ) {
+	echo '<h1>No se especificó la encuesta</h1>';
+	die();
+}
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -10,7 +16,7 @@
 </head>
 <body>
 <header>
-	<img src="./assets/img/header-home.jpg" class="w-100" alt="">
+	<img src="./assets/img/header-renta-equipos.jpg" class="w-100" alt="">
 </header>
 <div class="main-content my-4">
 	<div class="container">
@@ -22,7 +28,7 @@
 		</div>
 		<form action="process-request.php" method="post" class="form-survey">
 			<input type="hidden" name="action" value="update_register">
-			<input type="hidden" name="id" value="">
+			<input type="hidden" name="id" value="<?php echo $_GET['survey']; ?>">
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="form-group">

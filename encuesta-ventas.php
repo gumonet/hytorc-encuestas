@@ -16,7 +16,7 @@
 </head>
 <body>
 	<header>
-		<img src="./assets/img/header-home.jpg" class="w-100" alt="">
+		<img src="./assets/img/header-ventas.jpg" class="w-100" alt="">
 	</header>
 	<div class="main-content my-4">
 		<div class="container">
