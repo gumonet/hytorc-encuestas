@@ -24,6 +24,9 @@
   justify-content: center;
   align-items: center;
   background: #283383;
+  background-image: linear-gradient(0deg, rgba(40, 51, 131, 0.80), rgba(40, 51, 131, 0.80)), url("../img/form-bg.jpg") ;
+  background-size: cover;
+  background-position: center;
   a.btn{
     display: block;
     width: 100%;
@@ -58,5 +61,15 @@
     margin: 1rem auto;
     background: #ffffff;
     padding: 1rem;
+  }
+}
+
+.error-message {
+  background: #e17f7f;
+  padding: 8px 10px;
+  color: #730e0e;
+  p{
+    margin: 0;
+    padding: 0;
   }
 }

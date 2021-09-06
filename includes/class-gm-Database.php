@@ -19,15 +19,15 @@ class GMDatabase{
 
 		$date = explode('/', $array_data['date'] );
 
-		$query = "INSERT INTO registros ( cliente_id, nombre, rep_ventas, correo_electronico, date, tipo_encuesta, id_factura ) " .
+		$query = "INSERT INTO registros ( cliente_id, nombre, rep_ventas, correo_electronico, date, tipo_encuesta, id_factura, fecha_registro ) " .
 			" VALUES ( " .
 			" ' " . $array_data['cliente_id'] . " ', ".
 			" ' " . $array_data['nombre'] . " ', ".
 			" ' " . $array_data['rep_ventas'] . " ', ".
 			" ' " . $array_data['correo_electronico'] . " ', ".
 			" ' " . $date[2] . '-' . $date[1] . '-' . $date[0] . " ', ".
-			" '', ".
-			" ' " . $array_data['id_factura'] . " ' ".
+			" '". $array_data['tipo_encuesta'] ."', ".
+			" ' " . $array_data['id_factura'] . " ', now() ".
 		" )";
 
 		return $this->processQuery( $query );

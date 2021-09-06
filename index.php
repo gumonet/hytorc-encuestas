@@ -17,37 +17,52 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-2"></div>
+				<?php
+					$error = false;
+					if ( ! isset($_GET['encuesta']) ){
+						$error = ' No se recibió el tipo de encuesta';
+					} else{
+						if( ! in_array( $_GET['encuesta'], [ 'ventas', 'renta-equipo', 'mantenimiento' ] )) {
+							$error = ' El parametro encuesta es incorrecto, debería ser: ventas, renta-equipo, mantenimiento';
+						}
+					}
+				?>
 
 				<div class="col-lg-4 form-home-content">
 					<h2>Registrarse</h2>
+					<?php if( $error !== false ){ ?>
+					<div class="error-message">
+						<p> <?php echo $error ?> </p>
+					</div>
+					<?php } ?>
 					<div class="content-form">
 						<form action="process-request.php" method="post">
 							<input type="hidden" name="action" value="save_register">
-							<input type="hidden" name="cliente_id" value="<?php echo $_GET['cliente_id']; ?>">
-							<input type="hidden" name="id_factura" value="<?php echo $_GET['id_factura']; ?>">
+							<input type="hidden" name="cliente_id" value="<?php echo isset( $_GET['cliente_id'] ) ? $_GET['cliente_id'] : '';  ?>">
+							<input type="hidden" name="id_factura" value="<?php echo $_GET['factura']; ?>">
+							<input type="hidden" name="tipo_encuesta" value="<?php echo $_GET['encuesta']; ?>">
 							<div class="form-group">
-								<input type="text" name="nombre" id="nombre" placeholder="Nombre del cliente" class="form-control">
+								<input type="text" name="nombre" id="nombre" placeholder="Nombre del cliente" value="<?php echo isset( $_GET['nombre'] ) ? $_GET['nombre'] : '';  ?>" class="form-control">
 							</div>
 							<div class="form-group">
-								<input type="text" name="rep_ventas" id="rep_ventas" placeholder="Nombre del representante de ventas" class="form-control">
+								<input type="text" name="rep_ventas" id="rep_ventas" value="<?php echo isset( $_GET['rep-ventas'] ) ? $_GET['rep-ventas'] : '';  ?>" placeholder="Nombre del representante de ventas" class="form-control">
 							</div>
 							<div class="form-group">
-								<input type="text" name="correo_electronico" id="correo_electronico" placeholder="Correo electrónico" class="form-control">
+								<input type="text" name="correo_electronico" value="<?php echo isset( $_GET['email'] ) ? $_GET['email'] : '';  ?>" id="correo_electronico" placeholder="Correo electrónico" class="form-control">
 							</div>
 							<div class="form-group">
 								<label for="date">Seleccionar fecha</label>
 								<input type="text" name="date" id="date" class="form-control">
 							</div>
 							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary"> Enviar </button>
+
+								<button type="submit" <?php echo ( $error !== false ) ? 'disabled' : ''; ?> class="form-control btn btn-primary"> Enviar </button>
 							</div>
 						</form>
 					</div>
 				</div>
 				<div class="col-lg-4 column-blue-form">
-					<a href="#" class="btn btn-lg btn-primary btn-block"> Ventas</a>
-					<a href="#" class="btn btn-lg btn-primary btn-block"> Mantenimiento</a>
-					<a href="#" class="btn btn-lg btn-primary btn-block"> Rentas de equipo</a>
+
 				</div>
 				<div class="col-lg-2"></div>
 			</div>

@@ -9,18 +9,21 @@ if( isset( $post['action'] ) ) {
 
 	switch ( $post['action'] ) {
 		case 'save_register':
+			//Validar que la factura, no esté registrada
+			$tipo_encuesta = $_POST['tipo_encuesta'];
 			$register_id = $controller->save_register( $post );
 			if ( $register_id !== false ){
 				//obtener tipo de encuestas
-				header('Location: encuesta-ventas.php?survey=' . $register_id);
+				header('Location: encuesta-' . $tipo_encuesta . '.php?survey=' . $register_id);
 			} else {
 				echo '<h1>Ocurrio un error al almacenar el registro</h1>';
 			}
 			break;
 		case 'update_register':
-			$register_id = 7; //$controller->update_register( $post );
-			if ( $register_id  !== false ) {
-				$receptor = $controller->getEmail( $register_id );
+			$surver_id = $_POST['id'];
+			$transaction = $controller->update_register( $post );
+			if ( $transaction  !== false ) {
+				$receptor = $controller->getEmail( $surver_id );
 				if ( $receptor !== false) {
 					SendEmail::send( $receptor );
 				}
