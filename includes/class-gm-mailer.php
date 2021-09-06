@@ -12,11 +12,11 @@ class SendEmail {
 
 		try {
 			$mail->isSMTP();
-			$mail->Host = 'smtp.mailtrap.io';
+			$mail->Host = 'mail.laboratorio-goobec.com ';
 			$mail->SMTPAuth = true;
-			$mail->Port = 2525;
-			$mail->Username = '476394cf8ad5d1';
-			$mail->Password = 'bd669d8fb53b93';
+			$mail->Port = 587;
+			$mail->Username = 'prueba@laboratorio-goobec.com';
+			$mail->Password = '@Prueba2021';
 			//Recipients
 			$mail->setFrom('noreply@hytorc.com', 'Hytorc');
 			$mail->addAddress($receptor['email'], $receptor['nombre']);     //Add a recipient

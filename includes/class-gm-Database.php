@@ -11,7 +11,7 @@ class GMDatabase{
 	}
 
 	public function get_con(){
-		return mysqli_connect("hytorc-mysql", "homestead", "secret", "homestead");
+		return mysqli_connect("localhost", "monolame_hytorc", "hytorc123", "monolame_hytorc");
 	}
 
 	public  function save_register( $array_data ) {

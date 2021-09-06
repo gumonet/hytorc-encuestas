@@ -1,9 +1,48 @@
 # hytorc-encuestas
 
+## Requerimientos del proyecto
+- Base de datos Mysql 5.6 o superior
+- PHP 7.4 o superior
+- Servidor Apache o Nginx
+
+## Configuración de parametros de conexión de la base de datos  
+
+### Configuración de la conexión a la base de datos
+Se requiere modificar el archivo `includes/class-gm-Database.php` y cambiar en el siguiente fragmento de código  los parametros según nuestra conexión a la base de datos.  
+~~~~
+public function get_con(){
+    return mysqli_connect("host", "user", "password", "database");
+}
+~~~~
+
+### Configuración de la cuenta de email  
+Para poder realizar envíos de emails será necesario contar con una cuenta con configuración smtp, esto evitará que nuestros correos lleguen a espam,
+dicha configuración se realiza desde el archivo `includes/class-gm-mailer.php` en el siguiente fragmento de código:  
+~~~~
+$mail->Host = 'smtp.mailtrap.io'; // Servidor smtp
+$mail->SMTPAuth = true; //Dejarlo por default
+$mail->Port = 2525; //Puerto SMTP
+$mail->Username = '476394cf8ad5d1'; //Correo electrónico (usuario)
+$mail->Password = 'bd669d8fb53b93'; Contraseña
+~~~~
+
+## Funcionamiento de la plataforma  
+Para que el formulario de inicio pueda procesar información se requiere recibir parametros mediante la url de la siguiente manera:  
+`https://hytorc.monola.me/?factura=158&nombre=Angel%20Gutierrez%20Monola&rep-ventas=Juan%20Gonzales&email=gutierrez.monola@gmail.com&encuesta=ventas`  
+
+**Donde:**  
+- **https://hytorc.monola.me/** Es el dominio en donde la plataforma quedé instalada
+- **factura:** Es el número de la factura del cliente
+- **nombre:** Es el nombre del cliente, los espacios deben ser representados por `%20` 
+- **rep-ventas:** Corresponde al nombre completo del representante de ventas. 
+- **email:** Es el correo electrónico del cliente  
+- **encuesta:** Es el tipo de encuesta que el cliente debe responder, este parametro solo acepta tres posibles valores: ventas, renta-equipo, mantenimiento
+
+## Ejecutar projecto utilizando Docker
 - Execute ``$ docker-compose build ``
 - Execute ``$ docker-compose up -d``
 
-# Descripción de las preguntas y sus campos en la base de datos. 
+## Descripción de las preguntas y sus campos en la base de datos. 
 
 `ID` Identificador del cliente  
 `nombre` Nombre  
@@ -13,7 +52,7 @@
 ``tipo_encuesta`` Tipo de la encuesta  
 ``id_factura`` ID de la factura  
 
-## Preguntas encuesta Servicio / Ventas ##
+### Preguntas encuesta Servicio / Ventas
 `ventas_p1` ¿Los equipos suministrados estuvieron de acuerdo con las especificaciones técnicas acordadas?. 
 `ventas_p2` ¿Los precios permanecieron fijos durante la vigencia del contrato o acuerdo?.  
 `ventas_p3` ¿Los equipos se suministraron en el plazo acordado?  
@@ -24,14 +63,14 @@ de la operación o entrega?
 `ventas_p7` ¿Está satisfecho con el servicio proporcionado por COISA en los equipos HYTORC?  
 `ventas_p8` ¿El representante de Ventas atiende con prontitud mis necesidades?  
 
-## Preguntas encuesta Servicios / Mantenimiento ##
+### Preguntas encuesta Servicios / Mantenimiento ##
 `servicios_p1` ¿Tiempo de respuesta del diagnóstico de sus equipos (Cotización)?.  
 `servicios_p2` ¿La cotización del Servicio fue clara, completa y sin ambigüedades?. 
 `servicios_p3` ¿Cómo fue el tiempo de entrega de sus equipos?.  
 `servicios_p4` Después del servicio brindado, ¿Cómo operan sus equipos?.  
 `servicios_p5` ¿Cómo fue la calidad en el servicio proporcionado?.  
 
-## Preguntas encuesta Servicio / Renta equipo ##
+### Preguntas encuesta Servicio / Renta equipo ##
 `renta_p1` ¿El equipo se entregó en el plazo acordado?.  
 `renta_p2` ¿El Equipo Operó correctamente?.  
 `renta_p3` ¿El equipo cumplía con las Especificaciones requeridas?
