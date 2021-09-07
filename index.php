@@ -19,6 +19,7 @@
 				<div class="col-lg-2"></div>
 				<?php
 					$error = false;
+					$respuesta_existente = false;
 					if ( ! isset($_GET['encuesta']) ){
 						$error = ' No se recibió el tipo de encuesta';
 					} else{
@@ -26,39 +27,51 @@
 							$error = ' El parametro encuesta es incorrecto, debería ser: ventas, renta-equipo, mantenimiento';
 						}
 					}
+					if( false === $error ) {
+						require_once 'includes/class-gm-Database.php';
+						$db = new GMDatabase();
+						$registro = $db->existe_encuesta( array(
+								'tipo_encuesta'      => $_GET['encuesta'],
+							    'correo_electronico' => $_GET['email'],
+							    'id_factura'		 => $_GET['factura'],
+						));
+						if( $registro )
+							$respuesta_existente = true;
+					}
 				?>
 
 				<div class="col-lg-4 form-home-content">
 					<h2>Registrarse</h2>
-					<?php if( $error !== false ){ ?>
-					<div class="error-message">
-						<p> <?php echo $error ?> </p>
-					</div>
-					<?php } ?>
-					<div class="content-form">
-						<form action="process-request.php" method="post">
-							<input type="hidden" name="action" value="save_register">
-							<input type="hidden" name="cliente_id" value="<?php echo isset( $_GET['cliente_id'] ) ? $_GET['cliente_id'] : '';  ?>">
-							<input type="hidden" name="id_factura" value="<?php echo $_GET['factura']; ?>">
-							<input type="hidden" name="tipo_encuesta" value="<?php echo $_GET['encuesta']; ?>">
-							<div class="form-group">
-								<input type="text" name="nombre" id="nombre" placeholder="Nombre del cliente" value="<?php echo isset( $_GET['nombre'] ) ? $_GET['nombre'] : '';  ?>" class="form-control">
-							</div>
-							<div class="form-group">
-								<input type="text" name="rep_ventas" id="rep_ventas" value="<?php echo isset( $_GET['rep-ventas'] ) ? $_GET['rep-ventas'] : '';  ?>" placeholder="Nombre del representante de ventas" class="form-control">
-							</div>
-							<div class="form-group">
-								<input type="text" name="correo_electronico" value="<?php echo isset( $_GET['email'] ) ? $_GET['email'] : '';  ?>" id="correo_electronico" placeholder="Correo electrónico" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="date">Seleccionar fecha</label>
-								<input type="text" name="date" id="date" class="form-control">
-							</div>
-							<div class="form-group">
 
-								<button type="submit" <?php echo ( $error !== false ) ? 'disabled' : ''; ?> class="form-control btn btn-primary"> Enviar </button>
-							</div>
-						</form>
+					<div class="content-form">
+						<?php if( $respuesta_existente ) { ?>
+							<h2>Encuesta duplicada.</h2>
+							<p> Se ha detectado una respuesta relacionada al email <strong> <?php echo $_GET['email']; ?> </strong> con el número de factura <strong><?php echo $_GET['factura']; ?></strong> </p>
+						<?php } else { ?>
+							<form action="process-request.php" method="post">
+								<input type="hidden" name="action" value="save_register">
+								<input type="hidden" name="cliente_id" value="<?php echo isset( $_GET['cliente_id'] ) ? $_GET['cliente_id'] : '';  ?>">
+								<input type="hidden" name="id_factura" value="<?php echo $_GET['factura']; ?>">
+								<input type="hidden" name="tipo_encuesta" value="<?php echo $_GET['encuesta']; ?>">
+								<div class="form-group">
+									<input type="text" name="nombre" id="nombre" placeholder="Nombre del cliente" value="<?php echo isset( $_GET['nombre'] ) ? $_GET['nombre'] : '';  ?>" class="form-control">
+								</div>
+								<div class="form-group">
+									<input type="text" name="rep_ventas" id="rep_ventas" value="<?php echo isset( $_GET['rep-ventas'] ) ? $_GET['rep-ventas'] : '';  ?>" placeholder="Nombre del representante de ventas" class="form-control">
+								</div>
+								<div class="form-group">
+									<input type="text" name="correo_electronico" value="<?php echo isset( $_GET['email'] ) ? $_GET['email'] : '';  ?>" id="correo_electronico" placeholder="Correo electrónico" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="date">Seleccionar fecha</label>
+									<input type="text" name="date" id="date" class="form-control">
+								</div>
+								<div class="form-group">
+
+									<button type="submit" <?php echo ( $error !== false ) ? 'disabled' : ''; ?> class="form-control btn btn-primary"> Enviar </button>
+								</div>
+							</form>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="col-lg-4 column-blue-form">

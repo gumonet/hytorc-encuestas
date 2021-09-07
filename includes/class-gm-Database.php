@@ -11,9 +11,20 @@ class GMDatabase{
 	}
 
 	public function get_con(){
-		return mysqli_connect("localhost", "monolame_hytorc", "hytorc123", "monolame_hytorc");
+		//return mysqli_connect("localhost", "monolame_hytorc", "hytorc123", "monolame_hytorc");
+		return mysqli_connect("hytorc-mysql", "homestead", "secret", "homestead");
 	}
 
+	public function existe_encuesta( $data ) {
+		$query = " SELECT * FROM registros WHERE correo_electronico = '" . $data['correo_electronico'] . "' AND tipo_encuesta = '" . $data['tipo_encuesta'] . "' AND id_factura = '" . $data['id_factura'] . "' ";
+		$results = $this->conn->query( $query );
+		if ( $results->num_rows > 0 ) {
+			mysqli_close( $this->conn );
+			return true;
+		}
+		mysqli_close( $this->conn );
+		return  false;
+	}
 	public  function save_register( $array_data ) {
 		unset( $array_data['action'] );
 
@@ -21,13 +32,13 @@ class GMDatabase{
 
 		$query = "INSERT INTO registros ( cliente_id, nombre, rep_ventas, correo_electronico, date, tipo_encuesta, id_factura, fecha_registro ) " .
 			" VALUES ( " .
-			" ' " . $array_data['cliente_id'] . " ', ".
-			" ' " . $array_data['nombre'] . " ', ".
-			" ' " . $array_data['rep_ventas'] . " ', ".
-			" ' " . $array_data['correo_electronico'] . " ', ".
-			" ' " . $date[2] . '-' . $date[1] . '-' . $date[0] . " ', ".
+			" '" . $array_data['cliente_id'] . "', ".
+			" '" . $array_data['nombre'] . "', ".
+			" '" . $array_data['rep_ventas'] . "', ".
+			" '" . $array_data['correo_electronico'] . "', ".
+			" '" . $date[2] . '-' . $date[1] . '-' . $date[0] . "', ".
 			" '". $array_data['tipo_encuesta'] ."', ".
-			" ' " . $array_data['id_factura'] . " ', now() ".
+			" '" . $array_data['id_factura'] . "', now() ".
 		" )";
 
 		return $this->processQuery( $query );
