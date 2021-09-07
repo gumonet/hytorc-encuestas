@@ -26,34 +26,39 @@
 						contestar las siguientes preguntas, para así contar con información objetiva y lograr nuestra mejora continua y su satisfacción.</p>
 				</div>
 			</div>
-			<form action="process-request.php" method="post" class="form-survey">
+			<form action="process-request.php" method="post" class="form-survey" onsubmit=" return validationForm();" >
 				<input type="hidden" value="<?php echo $_GET['survey']; ?>" name="id" >
 				<input type="hidden" value="update_register" name="action">
+				<div class="row">
+					<div class="col" id="error-msg-content">
+
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="form-group">
 							<p>¿Los equipos suministrados estuvieron de acuerdo con las especificaciones técnicas acordadas?</p>
 							<div class="content-radios">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p1" id="ventas_excelente_p1" value="excelente">
+									<input class="form-check-input" required type="radio" name="ventas_p1" id="ventas_excelente_p1" value="excelente">
 									<label class="form-check-label" for="ventas_excelente_p1">
 										Excelente
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p1" id="ventas_muy_bien_p1" value="muy-bien">
+									<input class="form-check-input" required type="radio" name="ventas_p1" id="ventas_muy_bien_p1" value="muy-bien">
 									<label class="form-check-label" for="ventas_muy_bien_p1">
 										Muy bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p1" id="ventas_bien_p1" value="bien">
+									<input class="form-check-input" required type="radio" name="ventas_p1" id="ventas_bien_p1" value="bien">
 									<label class="form-check-label" for="ventas_bien_p1">
 										Bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p1" id="ventas_mal_p1" value="mal">
+									<input class="form-check-input" required type="radio" name="ventas_p1" id="ventas_mal_p1" value="mal">
 									<label class="form-check-label" for="ventas_mal_p1">
 										Mal
 									</label>
@@ -64,25 +69,25 @@
 							<p>¿Los precios permanecieron fijos durante la vigencia del contrato o acuerdo?</p>
 							<div class="content-radios">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p2" id="ventas_excelente_p2" value="excelente">
+									<input class="form-check-input" required type="radio" name="ventas_p2" id="ventas_excelente_p2" value="excelente">
 									<label class="form-check-label" for="ventas_excelente_p2">
 										Excelente
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p2" id="ventas_muy_bien_p2" value="muy-bien">
+									<input class="form-check-input" required type="radio" name="ventas_p2" id="ventas_muy_bien_p2" value="muy-bien">
 									<label class="form-check-label" for="ventas_muy_bien_p2">
 										Muy bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p2" id="ventas_bien_p2" value="bien">
+									<input class="form-check-input" required type="radio" name="ventas_p2" id="ventas_bien_p2" value="bien">
 									<label class="form-check-label" for="ventas_bien_p2">
 										Bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p2" id="ventas_mal_p2" value="mal">
+									<input class="form-check-input" required type="radio" name="ventas_p2" id="ventas_mal_p2" value="mal">
 									<label class="form-check-label" for="ventas_mal_p2">
 										Mal
 									</label>
@@ -93,25 +98,25 @@
 							<p>¿Los equipos se suministraron en el plazo acordado?</p>
 							<div class="content-radios">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p3" id="ventas_excelente_p3" value="excelente">
+									<input class="form-check-input" required type="radio" name="ventas_p3" id="ventas_excelente_p3" value="excelente">
 									<label class="form-check-label" for="ventas_excelente_p3">
 										Excelente
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p3" id="ventas_muy_bien_p3" value="muy-bien">
+									<input class="form-check-input" required type="radio" name="ventas_p3" id="ventas_muy_bien_p3" value="muy-bien">
 									<label class="form-check-label" for="ventas_muy_bien_p3">
 										Muy bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p3" id="ventas_bien_p3" value="bien">
+									<input class="form-check-input" required type="radio" name="ventas_p3" id="ventas_bien_p3" value="bien">
 									<label class="form-check-label" for="ventas_bien_p3">
 										Bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p3" id="ventas_mal_p3" value="mal">
+									<input class="form-check-input" required type="radio" name="ventas_p3" id="ventas_mal_p3" value="mal">
 									<label class="form-check-label" for="ventas_mal_p3">
 										Mal
 									</label>
@@ -122,25 +127,25 @@
 							<p>¿Los equipos se suministraron en el lugar de entrega o ubicación solicitada?</p>
 							<div class="content-radios">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p4" id="ventas_excelente_p4" value="excelente">
+									<input class="form-check-input" required type="radio" name="ventas_p4" id="ventas_excelente_p4" value="excelente">
 									<label class="form-check-label" for="ventas_excelente_p4">
 										Excelente
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p4" id="ventas_muy_bien_p4" value="muy-bien">
+									<input class="form-check-input" required type="radio" name="ventas_p4" id="ventas_muy_bien_p4" value="muy-bien">
 									<label class="form-check-label" for="ventas_muy_bien_p4">
 										Muy bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p4" id="ventas_bien_p4" value="bien">
+									<input class="form-check-input" required type="radio" name="ventas_p4" id="ventas_bien_p4" value="bien">
 									<label class="form-check-label" for="ventas_bien_p4">
 										Bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p4" id="ventas_mal_p4" value="mal">
+									<input class="form-check-input" required type="radio" name="ventas_p4" id="ventas_mal_p4" value="mal">
 									<label class="form-check-label" for="ventas_mal_p4">
 										Mal
 									</label>
@@ -153,25 +158,25 @@
 							<p>¿La documentación entregada por el personal de COISA fue la requerida?</p>
 							<div class="content-radios">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p5" id="ventas_excelente_p5" value="excelente">
+									<input class="form-check-input" required type="radio" name="ventas_p5" id="ventas_excelente_p5" value="excelente">
 									<label class="form-check-label" for="ventas_excelente_p5">
 										Excelente
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p5" id="ventas_muy_bien_p5" value="muy-bien">
+									<input class="form-check-input" required type="radio" name="ventas_p5" id="ventas_muy_bien_p5" value="muy-bien">
 									<label class="form-check-label" for="ventas_muy_bien_p5">
 										Muy bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p5" id="ventas_bien_p5" value="bien">
+									<input class="form-check-input" required type="radio" name="ventas_p5" id="ventas_bien_p5" value="bien">
 									<label class="form-check-label" for="ventas_bien_p5">
 										Bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p5" id="ventas_mal_p5" value="mal">
+									<input class="form-check-input" required type="radio" name="ventas_p5" id="ventas_mal_p5" value="mal">
 									<label class="form-check-label" for="ventas_mal_p5">
 										Mal
 									</label>
@@ -183,25 +188,25 @@
 								de la operación o entrega?</p>
 							<div class="content-radios">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p6" id="ventas_excelente_p6" value="excelente">
+									<input class="form-check-input" required type="radio" name="ventas_p6" id="ventas_excelente_p6" value="excelente">
 									<label class="form-check-label" for="ventas_excelente_p6">
 										Excelente
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p6" id="ventas_muy_bien_p6" value="muy-bien">
+									<input class="form-check-input" required type="radio" name="ventas_p6" id="ventas_muy_bien_p6" value="muy-bien">
 									<label class="form-check-label" for="ventas_muy_bien_p6">
 										Muy bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p6" id="ventas_bien_p6" value="bien">
+									<input class="form-check-input" required type="radio" name="ventas_p6" id="ventas_bien_p6" value="bien">
 									<label class="form-check-label" for="ventas_bien_p6">
 										Bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p6" id="ventas_mal_p6" value="mal">
+									<input class="form-check-input" required type="radio" name="ventas_p6" id="ventas_mal_p6" value="mal">
 									<label class="form-check-label" for="ventas_mal_p6">
 										Mal
 									</label>
@@ -212,25 +217,25 @@
 							<p>¿Está satisfecho con el servicio proporcionado por COISA en los equipos HYTORC?</p>
 							<div class="content-radios">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p7" id="ventas_excelente_p7" value="excelente">
+									<input class="form-check-input" required type="radio" name="ventas_p7" id="ventas_excelente_p7" value="excelente">
 									<label class="form-check-label" for="ventas_excelente_p7">
 										Excelente
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p7" id="ventas_muy_bien_p7" value="muy-bien">
+									<input class="form-check-input" required type="radio" name="ventas_p7" id="ventas_muy_bien_p7" value="muy-bien">
 									<label class="form-check-label" for="ventas_muy_bien_p7">
 										Muy bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p7" id="ventas_bien_p7" value="bien">
+									<input class="form-check-input" required type="radio" name="ventas_p7" id="ventas_bien_p7" value="bien">
 									<label class="form-check-label" for="ventas_bien_p7">
 										Bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p7" id="ventas_mal_p7" value="mal">
+									<input class="form-check-input" required type="radio" name="ventas_p7" id="ventas_mal_p7" value="mal">
 									<label class="form-check-label" for="ventas_mal_p7">
 										Mal
 									</label>
@@ -241,25 +246,25 @@
 							<p>¿El representante de Ventas atiende con prontitud mis necesidades?</p>
 							<div class="content-radios">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p8" id="ventas_excelente_p8" value="excelente">
+									<input class="form-check-input" required type="radio" name="ventas_p8" id="ventas_excelente_p8" value="excelente">
 									<label class="form-check-label" for="ventas_excelente_p8">
 										Excelente
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p8" id="ventas_muy_bien_p8" value="muy-bien">
+									<input class="form-check-input" required type="radio" name="ventas_p8" id="ventas_muy_bien_p8" value="muy-bien">
 									<label class="form-check-label" for="ventas_muy_bien_p8">
 										Muy bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p8" id="ventas_bien_p8" value="bien">
+									<input class="form-check-input" required type="radio" name="ventas_p8" id="ventas_bien_p8" value="bien">
 									<label class="form-check-label" for="ventas_bien_p8">
 										Bien
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="ventas_p8" id="ventas_mal_p8" value="mal">
+									<input class="form-check-input" required type="radio" name="ventas_p8" id="ventas_mal_p8" value="mal">
 									<label class="form-check-label" for="ventas_mal_p8">
 										Mal
 									</label>
@@ -293,6 +298,21 @@
 			</div>
 		</div>
 	</footer>
+	<script>
 
+		function validationForm(){
+			let $inputs = document.querySelectorAll('.form-check-input:checked');
+			console.log( $inputs )
+
+			if ( $inputs.length !== 8 ){
+				document.getElementById("error-msg-content").innerHTML = "<div class='error-message '> Todos los campos son obligatorios </div> ";
+				console.log( "Error ");
+				return false;
+			}
+			console.log( "Correcto" )
+			return true;
+		}
+
+	</script>
 </body>
 </html>

@@ -21,12 +21,17 @@ if ( ! isset( $_GET['survey'] ) ) {
 <div class="main-content my-4">
 	<div class="container">
 		<div class="row">
+			<div class="col" id="error-msg-content">
+
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-lg-12">
 				<p>En Comercializadora del Istmo deseamos mejorar e incrementar la calidad de los renta que le proporcionamos, por lo que le pedimos
 					contestar las siguientes preguntas, para así contar con información objetiva y lograr nuestra mejora continua y su satisfacción.</p>
 			</div>
 		</div>
-		<form action="process-request.php" method="post" class="form-survey">
+		<form action="process-request.php" method="post" class="form-survey"  onsubmit=" return validationForm();">
 			<input type="hidden" name="action" value="update_register">
 			<input type="hidden" name="id" value="<?php echo $_GET['survey']; ?>">
 			<div class="row">
@@ -35,25 +40,25 @@ if ( ! isset( $_GET['survey'] ) ) {
 						<p>¿Tiempo de respuesta del diagnóstico de sus equipos (Cotización)?</p>
 						<div class="content-radios">
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p1" id="renta_excelente_p1" value="excelente">
+								<input class="form-check-input" required type="radio" name="renta_p1" id="renta_excelente_p1" value="excelente">
 								<label class="form-check-label" for="renta_excelente_p1">
 									Excelente
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p1" id="renta_muy_bien_p1" value="muy-bien">
+								<input class="form-check-input" required type="radio" name="renta_p1" id="renta_muy_bien_p1" value="muy-bien">
 								<label class="form-check-label" for="renta_muy_bien_p1">
 									Muy bien
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p1" id="renta_bien_p1" value="bien">
+								<input class="form-check-input" required type="radio" name="renta_p1" id="renta_bien_p1" value="bien">
 								<label class="form-check-label" for="renta_bien_p1">
 									Bien
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p1" id="renta_mal_p1" value="mal">
+								<input class="form-check-input" required type="radio" name="renta_p1" id="renta_mal_p1" value="mal">
 								<label class="form-check-label" for="renta_mal_p1">
 									Mal
 								</label>
@@ -64,25 +69,25 @@ if ( ! isset( $_GET['survey'] ) ) {
 						<p>¿La cotización del Servicio fue clara, completa y sin ambigüedades?</p>
 						<div class="content-radios">
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p2" id="renta_excelente_p2" value="excelente">
+								<input class="form-check-input" required type="radio" name="renta_p2" id="renta_excelente_p2" value="excelente">
 								<label class="form-check-label" for="renta_excelente_p2">
 									Excelente
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p2" id="renta_muy_bien_p2" value="muy-bien">
+								<input class="form-check-input" required type="radio" name="renta_p2" id="renta_muy_bien_p2" value="muy-bien">
 								<label class="form-check-label" for="renta_muy_bien_p2">
 									Muy bien
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p2" id="renta_bien_p2" value="bien">
+								<input class="form-check-input" required type="radio" name="renta_p2" id="renta_bien_p2" value="bien">
 								<label class="form-check-label" for="renta_bien_p2">
 									Bien
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p2" id="renta_mal_p2" value="mal">
+								<input class="form-check-input" required type="radio" name="renta_p2" id="renta_mal_p2" value="mal">
 								<label class="form-check-label" for="renta_mal_p2">
 									Mal
 								</label>
@@ -95,25 +100,25 @@ if ( ! isset( $_GET['survey'] ) ) {
 						<p>¿Cómo fue el tiempo de entrega de sus equipos?</p>
 						<div class="content-radios">
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p3" id="renta_excelente_p3" value="excelente">
+								<input class="form-check-input" required type="radio" name="renta_p3" id="renta_excelente_p3" value="excelente">
 								<label class="form-check-label" for="renta_excelente_p3">
 									Excelente
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p3" id="renta_muy_bien_p3" value="muy-bien">
+								<input class="form-check-input" required type="radio" name="renta_p3" id="renta_muy_bien_p3" value="muy-bien">
 								<label class="form-check-label" for="renta_muy_bien_p3">
 									Muy bien
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p3" id="renta_bien_p3" value="bien">
+								<input class="form-check-input" required type="radio" name="renta_p3" id="renta_bien_p3" value="bien">
 								<label class="form-check-label" for="renta_bien_p3">
 									Bien
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p3" id="renta_mal_p3" value="mal">
+								<input class="form-check-input" required type="radio" name="renta_p3" id="renta_mal_p3" value="mal">
 								<label class="form-check-label" for="renta_mal_p3">
 									Mal
 								</label>
@@ -124,25 +129,25 @@ if ( ! isset( $_GET['survey'] ) ) {
 						<p>¿Cómo fue el tiempo de entrega de sus equipos?</p>
 						<div class="content-radios">
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p4" id="renta_excelente_p4" value="excelente">
+								<input class="form-check-input" required type="radio" name="renta_p4" id="renta_excelente_p4" value="excelente">
 								<label class="form-check-label" for="renta_excelente_p4">
 									Excelente
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p4" id="renta_muy_bien_p4" value="muy-bien">
+								<input class="form-check-input" required type="radio" name="renta_p4" id="renta_muy_bien_p4" value="muy-bien">
 								<label class="form-check-label" for="renta_muy_bien_p4">
 									Muy bien
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p4" id="renta_bien_p4" value="bien">
+								<input class="form-check-input" required type="radio" name="renta_p4" id="renta_bien_p4" value="bien">
 								<label class="form-check-label" for="renta_bien_p4">
 									Bien
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="renta_p4" id="renta_mal_p4" value="mal">
+								<input class="form-check-input" required type="radio" name="renta_p4" id="renta_mal_p4" value="mal">
 								<label class="form-check-label" for="renta_mal_p4">
 									Mal
 								</label>
@@ -176,6 +181,21 @@ if ( ! isset( $_GET['survey'] ) ) {
 		</div>
 	</div>
 </footer>
+<script>
 
+	function validationForm(){
+		let $inputs = document.querySelectorAll('.form-check-input:checked');
+		console.log( $inputs )
+
+		if ( $inputs.length !== 4 ){
+			document.getElementById("error-msg-content").innerHTML = "<div class='error-message '> Todos los campos son obligatorios </div> ";
+			console.log( "Error ");
+			return false;
+		}
+		console.log( "Correcto" )
+		return true;
+	}
+
+</script>
 </body>
 </html>
