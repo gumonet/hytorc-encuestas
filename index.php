@@ -19,6 +19,7 @@
 				<div class="col-lg-2"></div>
 				<?php
 					$error = false;
+					$registro = false;
 					$respuesta_existente = false;
 					if ( ! isset($_GET['encuesta']) ){
 						$error = ' No se recibió el tipo de encuesta';
@@ -30,13 +31,12 @@
 					if( false === $error ) {
 						require_once 'includes/class-gm-Database.php';
 						$db = new GMDatabase();
+						$id_encuesta = null;
 						$registro = $db->existe_encuesta( array(
 								'tipo_encuesta'      => $_GET['encuesta'],
 							    'correo_electronico' => $_GET['email'],
 							    'id_factura'		 => $_GET['factura'],
 						));
-						if( $registro )
-							$respuesta_existente = true;
 					}
 				?>
 
@@ -44,27 +44,34 @@
 					<h2>Registrarse</h2>
 
 					<div class="content-form">
-						<?php if( $respuesta_existente ) { ?>
-							<h2>Encuesta duplicada.</h2>
-							<p> Se ha detectado una respuesta relacionada al email <strong> <?php echo $_GET['email']; ?> </strong> con el número de factura <strong><?php echo $_GET['factura']; ?></strong> </p>
-						<?php } else { ?>
+						<?php
+						if( $registro !== false ) { //encuesta-' . $tipo_encuesta . '.php?survey=' . $register_id
+							if( $registro['estatus'] === 'iniciado' ) { ?>
+								<h2>Encuesta en progreso.</h2>
+								<p> Tiene una encuesta pendiente de finalizar <br> <a class="btn btn-primary" href="./encuesta-<?php echo $_GET['encuesta']; ?>.php?survey=<?php echo $registro['id']  ?>"> Continuar </a> </p>
+							<?php } else { ?>
+								<h2>Encuesta duplicada.</h2>
+								<p> Se ha detectado una respuesta relacionada al email <strong> <?php echo $_GET['email']; ?> </strong> con el número de factura <strong><?php echo $_GET['factura']; ?></strong> </p>
+							<?php }
+						} else {
+							?>
 							<form action="process-request.php" method="post">
 								<input type="hidden" name="action" value="save_register">
 								<input type="hidden" name="cliente_id" value="<?php echo isset( $_GET['cliente_id'] ) ? $_GET['cliente_id'] : '';  ?>">
 								<input type="hidden" name="id_factura" value="<?php echo $_GET['factura']; ?>">
 								<input type="hidden" name="tipo_encuesta" value="<?php echo $_GET['encuesta']; ?>">
 								<div class="form-group">
-									<input type="text" name="nombre" id="nombre" placeholder="Nombre del cliente" value="<?php echo isset( $_GET['nombre'] ) ? $_GET['nombre'] : '';  ?>" class="form-control">
+									<input type="text" required name="nombre" id="nombre" placeholder="Nombre del cliente" value="<?php echo isset( $_GET['nombre'] ) ? $_GET['nombre'] : '';  ?>" class="form-control">
 								</div>
 								<div class="form-group">
-									<input type="text" name="rep_ventas" id="rep_ventas" value="<?php echo isset( $_GET['rep-ventas'] ) ? $_GET['rep-ventas'] : '';  ?>" placeholder="Nombre del representante de ventas" class="form-control">
+									<input type="text" required name="rep_ventas" id="rep_ventas" value="<?php echo isset( $_GET['rep-ventas'] ) ? $_GET['rep-ventas'] : '';  ?>" placeholder="Nombre del representante de ventas" class="form-control">
 								</div>
 								<div class="form-group">
-									<input type="text" name="correo_electronico" value="<?php echo isset( $_GET['email'] ) ? $_GET['email'] : '';  ?>" id="correo_electronico" placeholder="Correo electrónico" class="form-control">
+									<input type="text" required name="correo_electronico" value="<?php echo isset( $_GET['email'] ) ? $_GET['email'] : '';  ?>" id="correo_electronico" placeholder="Correo electrónico" class="form-control">
 								</div>
 								<div class="form-group">
 									<label for="date">Seleccionar fecha</label>
-									<input type="text" name="date" id="date" class="form-control">
+									<input type="text" name="date" id="date" required class="form-control">
 								</div>
 								<div class="form-group">
 

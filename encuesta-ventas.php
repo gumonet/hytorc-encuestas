@@ -29,6 +29,7 @@
 			<form action="process-request.php" method="post" class="form-survey" onsubmit=" return validationForm();" >
 				<input type="hidden" value="<?php echo $_GET['survey']; ?>" name="id" >
 				<input type="hidden" value="update_register" name="action">
+				<input type="hidden" value="finalizado" name="estatus">
 				<div class="row">
 					<div class="col" id="error-msg-content">
 

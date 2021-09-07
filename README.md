@@ -79,7 +79,7 @@ de la operación o entrega?
 ## Estructura SQL de la tabla ##
 
 ~~~
-CREATE TABLE `homestead`.`registros` (
+CREATE TABLE `registros` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cliente_id` VARCHAR(45) NULL,
   `nombre` VARCHAR(200) NULL,
@@ -105,6 +105,7 @@ CREATE TABLE `homestead`.`registros` (
   `renta_p2` VARCHAR(45) NULL,
   `renta_p3` VARCHAR(45) NULL,
   `renta_p4` VARCHAR(45) NULL,
+  `estatus` VARCHAR(45) NULL,
   `fecha_registro` DATETIME NULL,
   PRIMARY KEY (`id`));
 ~~~

@@ -29,6 +29,7 @@ if ( ! isset( $_GET['survey'] ) ) {
 		<form action="process-request.php" method="post" class="form-survey" onsubmit=" return validationForm();">
 			<input type="hidden" name="action" value="update_register">
 			<input type="hidden" name="id" value="<?php echo $_GET['survey']; ?>">
+			<input type="hidden" value="finalizado" name="estatus">
 			<div class="row">
 				<div class="col" id="error-msg-content">
 
