@@ -33,26 +33,32 @@ class SendEmail {
 	<title>HYTORC | Encuesta de satisfacción</title>
 </head>
 <body>
-
-<div class="main-content my-4">
-	<table align="centet">
+<table border="0" style="border: none; width: 100%" width="100%">
 	<tr>
-	<td>
-	<img src="' . $url_host . '/assets/img/header-home.jpg" style="width: 100%" class="w-100" alt="">
-</td>
-</tr>
-	<tr align="center" style="text-align: center; ">
-	<td>
-	<h1 style="text-align: center">GRACIAS POR TU RESPUESTA</h1>
+		<td valign="center" align="center" style="text-align: center">
+			<table style="max-width: 700px; width: 100%; text-align: center" width="100%" align="center">
+				<tr>
+					<td>
+						<img src="' . $url_host . '/assets/img/header-home.jpg" style="width: 100%" class="w-100" alt="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h1 style="text-align: center">GRACIAS POR TU RESPUESTA</h1>
 				<p style="text-align: center;">En Comercializadora del Istmo deseamos mejorar e incrementar la calidad de los servicios que le proporcionamos, por lo que le pedimos
 					contestar las siguientes preguntas, para así contar con información objetiva y lograr nuestra mejora continua y su satisfacción.</p>
-
-</td>
+						<p>
+							<a href="#"> <img src="assets/img/boton.png" alt="" style="width: 200px; height: auto;"> </a>
+						</p>
+						<p>
+							<a href="#"> <img src="assets/img/redes-sociales.png" alt="" style="width: 300px"> </a>
+						</p>
+					</td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 </table>
-</div>
-
-
 </body>
 </html>';
 			$mail->AltBody = '¡Gracias! Tu respuesta nos ayudará a darte un mejor servicio';
